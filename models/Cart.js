@@ -1,22 +1,17 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const CartSchema = new mongoose.Schema(
     {
-        userID:{type:String , required:true},
-        products:[
+        userId: { type: String, required: true }, // Changed `userID` to `userId` for consistency
+        products: [
             {
-                productId:{
-                    type:String
-                },
-                quantity:{
-                    type:Number,
-                    default: 1,
-                },
+                productId: { type: String }, // Changed to camelCase for consistency
+                quantity: { type: Number, default: 1 },
             },
         ],
-        
-    },{ timestamps: true }
+    },
+    { timestamps: true } // Automatically adds `createdAt` and `updatedAt` fields
 );
 
-
-module.exports = mongoose.model("User", UserSchema);
+// Export the correct schema
+module.exports = mongoose.model("Cart", CartSchema);
